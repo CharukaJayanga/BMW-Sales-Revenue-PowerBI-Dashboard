@@ -1,0 +1,53 @@
+1. Asia Revenue = CALCULATE([Total Revenue], 'BMW Sales'[Region] = "Asia")
+
+2. Avg Engine Size = AVERAGE('BMW Sales'[Engine_Size_L])
+
+3. Avg Selling Price = AVERAGE('BMW Sales'[Price_USD])
+
+4. Avg Units/Deal = AVERAGE('BMW Sales'[Unite_Sold])
+
+5. Diesel Share % = 
+DIVIDE(
+    CALCULATE([Total Revenue], 'BMW Sales'[Fuel_Type] = "Diesel"), 
+    [Total Revenue], 
+    0
+)
+
+
+6. Eco Share % = 
+DIVIDE(
+    CALCULATE([Total Revenue], 'BMW Sales'[Fuel_Type] IN {"Hybrid", "Electric"}),
+    [Total Revenue], 
+    0
+)
+
+7. EU Revenue = CALCULATE([Total Revenue], 'BMW Sales'[Region] = "Europe")
+
+8. High Class Txns = CALCULATE(COUNTROWS('BMW Sales'), 'BMW Sales'[Sales_Classification] = "High")
+
+9. High Value % = 
+DIVIDE(
+    CALCULATE([Total Revenue], 'BMW Sales'[Sales_Classification] = "High"),
+    [Total Revenue],
+    0
+)
+
+10. NA Revenue = CALCULATE([Total Revenue], 'BMW Sales'[Region] = "North America")
+
+11. PY Revenue = 
+VAR CurrentYear = MAX('BMW Sales'[Year])
+RETURN 
+CALCULATE([Total Revenue], 'BMW Sales'[Year] = CurrentYear - 1)
+
+12. Top Model = 
+TOPN(1, VALUES('BMW Sales'[Model]), [Total Revenue])
+
+13. Total Revenue = SUM('BMW Sales'[Total_Sales])
+
+14. Total Units = SUM('BMW Sales'[Unite_Sold])
+
+15. YoY Growth % = 
+VAR CurrRev = [Total Revenue]
+VAR PrevRev = [PY Revenue]
+RETURN 
+DIVIDE(CurrRev - PrevRev, PrevRev, 0)
