@@ -3,7 +3,7 @@
 An interactive Power BI dashboard built to provide clear, actionable insights into BMW's global automotive sales performance — covering revenue trends, fuel type analysis, regional distribution and customer segmentation.
 
 ## Dashboard Preview
-![Overview](Images/screenshot1.png)
+   ![Overview](Overview.png)
 
 ## Pages
 - **Page 1 — Overview:** High-level KPIs including Total Revenue, Units Sold, YoY Growth and fuel type breakdown
